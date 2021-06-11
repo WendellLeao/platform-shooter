@@ -4,11 +4,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Player Components")]
-    [SerializeField] private PlayerInput playerInput;
     [SerializeField] private Rigidbody2D playerBody;
+    
+    [Header("Player Input")]
+    [SerializeField] private PlayerInput playerInput;
     private Action onPlayerJumps;
-
-
+    
+    
     #region Propreties
     public PlayerInput PlayerInput
     {
