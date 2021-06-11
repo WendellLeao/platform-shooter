@@ -13,12 +13,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
-        if(playerController.PlayerInput.isMovingToRight)
+        if(playerController.PlayerInput.IsMovingToRight)
         {
             playerController.PlayerBody.velocity = new Vector2(
                 +MOVE_SPEED, playerController.PlayerBody.velocity.y);
         }
-        else if(playerController.PlayerInput.isMovingToLeft)
+        else if(playerController.PlayerInput.IsMovingToLeft)
         {
             playerController.PlayerBody.velocity = new Vector2(
                 -MOVE_SPEED, playerController.PlayerBody.velocity.y);
