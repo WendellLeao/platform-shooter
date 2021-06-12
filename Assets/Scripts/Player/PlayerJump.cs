@@ -6,18 +6,13 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     private const float JUMP_FORCE = 150f;
 
-    void OnEnable()
+    void Start()
     {
-        playerController.OnPlayerJumps += OnPlayerJumps_Jump;
+        playerController.PlayerInput.Land.Jump.performed += _ => PerformJump();
     }
     
-    private void OnPlayerJumps_Jump()
+    private void PerformJump()
     {
         playerController.PlayerBody.AddForce(new Vector2(playerController.PlayerBody.velocity.x, JUMP_FORCE));    
-    }
-
-    void OnDisable()
-    {
-        playerController.OnPlayerJumps -= OnPlayerJumps_Jump;
     }
 }

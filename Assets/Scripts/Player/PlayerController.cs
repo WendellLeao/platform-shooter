@@ -5,67 +5,31 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Components")]
     [SerializeField] private Rigidbody2D playerBody;
-    
-    [Header("Player Input")]
-    [SerializeField] private PlayerInputDesktop playerInputDesktop;
-    [SerializeField] private PlayerInputHandheld playerInputHandleheld;
-    private PlayerInput currentPlayerInput = new PlayerInput();
-    private Action onPlayerJumps;
-    
-    void Update()
+    private PlayerInput playerInput;
+
+    void Awake()
     {
-        HandlePlayerInputDevice();
+        playerInput = new PlayerInput();    
     }
 
-    private void HandlePlayerInputDevice()
+    void OnEnable()
     {
-        if(IsOnDesktopDevice())
-        {
-            currentPlayerInput.IsMovingToRight = playerInputDesktop.isMovingToRight;
-            currentPlayerInput.IsMovingToLeft = playerInputDesktop.isMovingToLeft;
-
-            playerInputHandleheld.enabled = false;
-        }
-        else if(IsOnHandheldDevice())
-        {
-            currentPlayerInput.IsMovingToRight = playerInputHandleheld.isMovingToRight;
-            currentPlayerInput.IsMovingToLeft = playerInputHandleheld.isMovingToLeft;
-
-            playerInputDesktop.enabled = false;
-        }
-        else
-        {
-            Application.Quit();
-        }
+        playerInput.Enable();
+    }
+    void OnDisable()
+    {
+        playerInput.Disable();
     }
 
-    
-    #region Device Detector
-    public bool IsOnDesktopDevice()
-    {
-        return SystemInfo.deviceType == DeviceType.Desktop;
-    }
-    public bool IsOnHandheldDevice()
-    {
-        return SystemInfo.deviceType == DeviceType.Handheld;
-    }
-    #endregion
-    
     #region Propreties
-    public PlayerInput PlayerInput
-    {
-        get{return this.currentPlayerInput;}
-    }
-
     public Rigidbody2D PlayerBody
     {
         get{return this.playerBody;}
     }
 
-    public Action OnPlayerJumps
+    public PlayerInput PlayerInput
     {
-        get{return this.onPlayerJumps;}
-        set{this.onPlayerJumps = value;}
+        get{return this.playerInput;}
     }
     #endregion
 }
