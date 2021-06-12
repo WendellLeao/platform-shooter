@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Player/Input System/PlayerInputSysten.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Player/Input System/PlayerInputSystem.inputactions'
 
 using System;
 using System.Collections;
@@ -12,7 +12,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public @PlayerInput()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""PlayerInputSysten"",
+    ""name"": ""PlayerInputSystem"",
     ""maps"": [
         {
             ""name"": ""Land"",
