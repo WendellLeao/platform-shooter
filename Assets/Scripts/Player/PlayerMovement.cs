@@ -1,34 +1,36 @@
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerController))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Player Controller")]
-    [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerController _playerController;
+    
     private const float MOVE_SPEED = 6f;
     
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         HandleMovement();
     }
 
     private void HandleMovement()
     {
-        float movementInput = playerController.PlayerInput.Land.Move.ReadValue<float>();
+        float movementInput = _playerController.PlayerInput.Land.Move.ReadValue<float>();
 
         if(movementInput > 0f)
         {
-            playerController.PlayerBody.velocity = new Vector2(
-                +MOVE_SPEED, playerController.PlayerBody.velocity.y);
+            _playerController.PlayerBody.velocity = new Vector2(
+                +MOVE_SPEED, _playerController.PlayerBody.velocity.y);
         }
         else if(movementInput < 0f)
         {
-            playerController.PlayerBody.velocity = new Vector2(
-                -MOVE_SPEED, playerController.PlayerBody.velocity.y);
+            _playerController.PlayerBody.velocity = new Vector2(
+                -MOVE_SPEED, _playerController.PlayerBody.velocity.y);
         }
         else
         {
-            playerController.PlayerBody.velocity = new Vector2(
-                0f, playerController.PlayerBody.velocity.y);
+            _playerController.PlayerBody.velocity = new Vector2(
+                0f, _playerController.PlayerBody.velocity.y);
         }
     }
 }
